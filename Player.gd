@@ -18,6 +18,16 @@ func _process(delta):
 	position.y = clamp(position.y, 0, screen_size.y)
 
 
+func _set_animation_type(velocity):
+	if velocity.x != 0:
+		$AnimatedSprite.animation = "walk"
+		$AnimatedSprite.flip_v = false
+		$AnimatedSprite.flip_h = velocity.x < 0
+	elif velocity.y != 0:
+		$AnimatedSprite.animation = "up"
+		$AnimatedSprite.flip_v = velocity.y > 0
+
+
 func _update_and_return_sprite_velocity():
 	var velocity = Vector2()  # The player's movement vector.
 	if Input.is_action_pressed("ui_right"):
@@ -30,6 +40,7 @@ func _update_and_return_sprite_velocity():
 		velocity.y -= 1
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
+		_set_animation_type(velocity)
 		$AnimatedSprite.play()
 	else:
 		$AnimatedSprite.stop()
