@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Godot- 02 -dodge-creeps"
+config/name="GodotTutorial:DodgeCreeps"
 config/icon="res://icon.png"
 
 [display]
