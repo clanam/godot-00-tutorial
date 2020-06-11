@@ -1,3 +1,10 @@
 [gd_scene format=2]
 
-[node name="RigidBody2D" type="RigidBody2D"]
+[node name="Mob" type="RigidBody2D"]
+gravity_scale = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
