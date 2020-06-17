@@ -23,7 +23,6 @@ func new_game():
 func _ready():
 	# Make sure a new random seed is used each time.
 	randomize()
-	new_game()
 
 
 func _on_MobTimer_timeout():
