@@ -9,6 +9,8 @@ func game_over():
 	$ScoreTimer.stop()
 	$MobTimer.stop()
 	get_tree().call_group("mobs", "queue_free")
+	$Music.stop()
+	$DeathSound.play()
 	$HUD.show_game_over()
 
 
@@ -18,6 +20,7 @@ func new_game():
 	$HUD.update_score(score)
 	$HUD.show_message("Get Ready")
 	$StartTimer.start()
+	$Music.play()
 
 
 # Called when the node enters the scene tree for the first time.
