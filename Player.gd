@@ -5,6 +5,7 @@ signal hit
 
 export var speed = 400  # How fast the player will move (pixels/sec).
 var screen_size  # Size of the game window.
+var target = Vector2() # Tapped/clicked position
 
 
 # Called when the node enters the scene tree for the first time.
@@ -15,10 +16,23 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var velocity = _update_and_return_sprite_velocity()
+	var velocity = Vector2()
+	# Move towards the target and stop when close.
+	if position.distance_to(target) > 10:
+		velocity = target - position
+	if velocity.length() > 0:
+		velocity = velocity.normalized() * speed
+		_set_animation_type(velocity)
+		$AnimatedSprite.play()
+	else:
+		$AnimatedSprite.stop()
 	position += velocity * delta
 	position.x = clamp(position.x, 0, screen_size.x)
 	position.y = clamp(position.y, 0, screen_size.y)
+
+func _input(event):
+	if event is InputEventScreenTouch and event.pressed:
+		target = event.position
 
 
 func _on_Player_body_entered(body):
@@ -40,24 +54,6 @@ func _set_animation_type(velocity):
 
 func start(pos):
 	position = pos
+	target = pos
 	show()
 	$CollisionShape2D.disabled = false
-
-
-func _update_and_return_sprite_velocity():
-	var velocity = Vector2()  # The player's movement vector.
-	if Input.is_action_pressed("ui_right"):
-		velocity.x += 1
-	if Input.is_action_pressed("ui_left"):
-		velocity.x -= 1
-	if Input.is_action_pressed("ui_down"):
-		velocity.y += 1
-	if Input.is_action_pressed("ui_up"):
-		velocity.y -= 1
-	if velocity.length() > 0:
-		velocity = velocity.normalized() * speed
-		_set_animation_type(velocity)
-		$AnimatedSprite.play()
-	else:
-		$AnimatedSprite.stop()
-	return velocity
