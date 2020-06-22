@@ -44,10 +44,12 @@ func _on_Player_body_entered(body):
 
 
 func _set_animation_type(velocity):
-	if velocity.x != 0:
+	# Clear the flip states
+	$AnimatedSprite.flip_h = velocity.x < 0
+	$AnimatedSprite.flip_v = false
+	
+	if abs(velocity.x) > abs(velocity.y):
 		$AnimatedSprite.animation = "walk"
-		$AnimatedSprite.flip_v = false
-		$AnimatedSprite.flip_h = velocity.x < 0
 	elif velocity.y != 0:
 		$AnimatedSprite.animation = "up"
 		$AnimatedSprite.flip_v = velocity.y > 0
@@ -55,5 +57,6 @@ func _set_animation_type(velocity):
 func start(pos):
 	position = pos
 	target = pos
+	_set_animation_type(Vector2()) # clear animation
 	show()
 	$CollisionShape2D.disabled = false
