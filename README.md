@@ -8,10 +8,11 @@ https://docs.godotengine.org/en/stable/getting_started/step_by_step/your_first_g
 Unit tests in [GUT](https://github.com/bitwes/Gut)
 
 ```
-alias godot='/Applications/Godot.app/Contents/MacOS/Godot'
+alias godot="/Applications/Godot.app/Contents/MacOS/Godot"
+alias gut="godot -d -s --path $PWD addons/gut/gut_cmdln.gd"
 
 # in project root
-godot -d -s --path $PWD addons/gut/gut_cmdln.gd
+gut
 ```
 
  - `-d`:  run in debug mode

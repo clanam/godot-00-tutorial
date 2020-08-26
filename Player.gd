@@ -35,7 +35,7 @@ func _input(event):
 		target = event.position
 
 
-func _on_Player_body_entered(body):
+func _on_Player_body_entered(_body):
 	hide()  # Player disappears after being hit.
 	emit_signal("hit")
 
