@@ -4,11 +4,7 @@ var Player = load('res://Player.tscn')
 var _player = null
 
 func before_each():
-	_player = Player.instance()
-
-
-func after_each():
-	_player.queue_free()
+	_player = autoqfree(Player.instance())
 
 
 func test_start_sets_player_position():
