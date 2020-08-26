@@ -3,6 +3,17 @@
 Following along on the godot tutorial @
 https://docs.godotengine.org/en/stable/getting_started/step_by_step/your_first_game.html
 
+## Running the Game
+
+The game can be run via the godot editor or command line:
+
+```
+alias godot="/Applications/Godot.app/Contents/MacOS/Godot"
+
+# in project root
+godot
+```
+
 ## Running Tests
 
 Unit tests in [GUT](https://github.com/bitwes/Gut)
@@ -15,7 +26,7 @@ alias gut="godot -d -s --path $PWD addons/gut/gut_cmdln.gd"
 gut
 ```
 
- - `-d`:  run in debug mode
+ - `-d`: run in debug mode
  - `-s`: run a script
  - `--path $PWD`: tells Godot to treat the current directory as project root
 
