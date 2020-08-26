@@ -10,8 +10,12 @@ var target = Vector2() # Tapped/clicked position
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	screen_size = get_viewport_rect().size
-	hide()
+	init(get_viewport_rect().size)
+
+
+func init(viewport_rect_size):
+		screen_size = viewport_rect_size
+		hide()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
