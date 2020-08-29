@@ -7,7 +7,6 @@ Other Links:
 
  - [file system](https://docs.godotengine.org/en/stable/getting_started/step_by_step/filesystem.html)
  - [game saves](https://docs.godotengine.org/en/stable/tutorials/io/saving_games.html)
- - [config files](https://docs.godotengine.org/en/stable/classes/class_configfile.html)
 
 ## Running the Game
 
@@ -25,6 +24,7 @@ godot
 Unit tests in [GUT](https://github.com/bitwes/Gut)
 
  - [link](https://github.com/bitwes/Gut/wiki/Asserts-and-Methods) to asserts and methods page
+ - [link](https://github.com/bitwes/Gut/wiki/Spies) to spies
 
 ```
 alias godot="/Applications/Godot.app/Contents/MacOS/Godot"

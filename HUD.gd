@@ -22,8 +22,12 @@ func show_message(text):
 	$MessageTimer.start()
 
 
+func update_high_score(high_score):
+	$HiScoreLabel.text = "Hi: " + str(high_score)
+	
+
 func update_score(score):
-	$ScoreLabel.text = str(score)
+	$ScoreLabel.text = "Score: " + str(score)
 
 
 func _on_MessageTimer_timeout():

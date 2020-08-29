@@ -19,6 +19,7 @@ func game_over():
 	
 	if high_score > score:
 		high_score = score
+		$HUD.update_high_score(high_score)
 		save_game()
 
 
@@ -48,6 +49,7 @@ func load_game():
 	if save_game.get_position() < save_game.get_len():
 		var node_data = parse_json(save_game.get_line())
 		high_score = node_data["high_score"]
+		$HUD.update_high_score(high_score)
 
 	save_game.close()
 
