@@ -3,6 +3,7 @@ extends "res://addons/gut/test.gd"
 var Player = load('res://Player.tscn')
 var _player = null
 
+
 func before_each():
 	_player = autoqfree(Player.instance())
 	_player.init(Vector2(1000, 1000))
