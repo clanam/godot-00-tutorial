@@ -6,6 +6,11 @@ var _main = null
 
 func before_each():
 	_main = autoqfree(Main.instance())
+	add_child(_main)
+
+
+func after_each():
+	remove_child(_main)
 
 
 func test_new_game_sets_hud_state():

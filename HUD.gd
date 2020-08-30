@@ -24,7 +24,7 @@ func show_message(text):
 
 func update_high_score(high_score):
 	$HiScoreLabel.text = "Hi: " + str(high_score)
-	
+
 
 func update_score(score):
 	$ScoreLabel.text = "Score: " + str(score)

@@ -24,7 +24,7 @@ godot
 Unit tests in [GUT](https://github.com/bitwes/Gut)
 
  - [link](https://github.com/bitwes/Gut/wiki/Asserts-and-Methods) to asserts and methods page
- - [link](https://github.com/bitwes/Gut/wiki/Spies) to spies
+ - [link](https://github.com/bitwes/Gut/wiki/Stubbing) to stubbing
 
 ```
 alias godot="/Applications/Godot.app/Contents/MacOS/Godot"
