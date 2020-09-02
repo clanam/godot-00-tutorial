@@ -3,10 +3,11 @@ extends Node
 
 export (PackedScene) var Mob
 
-const SAVE_FILE_NAME = "user://data.save"
+const Persistence = preload("Persistence.gd")
 
 var score
 var high_score = 0
+var persistence
 
 
 func game_over():
@@ -20,7 +21,7 @@ func game_over():
 	if high_score < score:
 		high_score = score
 		$HUD.update_high_score(high_score)
-		save_game()
+		persistence.save_game(high_score)
 
 
 func new_game():
@@ -32,32 +33,13 @@ func new_game():
 	$Music.play()
 
 
-func save_game():
-	var save_game = File.new()
-	save_game.open(SAVE_FILE_NAME, File.WRITE)
-	save_game.store_line(to_json({"high_score": high_score}))
-	save_game.close()
-
-
-func load_game():
-	var save_game = File.new()
-	if not save_game.file_exists(SAVE_FILE_NAME):
-		return # Error! We don't have a save to load.
-
-	save_game.open(SAVE_FILE_NAME, File.READ)
-
-	if save_game.get_position() < save_game.get_len():
-		var node_data = parse_json(save_game.get_line())
-		high_score = node_data["high_score"]
-		$HUD.update_high_score(high_score)
-
-	save_game.close()
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Make sure a new random seed is used each time.
 	randomize()
-	load_game()
+	persistence = Persistence.new()
+	high_score = persistence.load_game()
+	$HUD.update_high_score(high_score)
 
 
 func _on_MobTimer_timeout():
