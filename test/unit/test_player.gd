@@ -1,6 +1,6 @@
 extends "res://addons/gut/test.gd"
 
-var Player = load('res://Player.tscn')
+var Player = load('res://scenes/player/Player.tscn')
 var _player = null
 
 

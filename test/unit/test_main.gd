@@ -1,7 +1,7 @@
 extends "res://addons/gut/test.gd"
 
-var HUD = load('res://HUD.tscn')
-var Main = load('res://Main.tscn')
+var HUD = load('res://scenes/hud/HUD.tscn')
+var Main = load('res://scenes/main/Main.tscn')
 
 var _main = null
 var _hud = null
