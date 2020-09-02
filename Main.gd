@@ -16,8 +16,8 @@ func game_over():
 	$Music.stop()
 	$DeathSound.play()
 	$HUD.show_game_over()
-	
-	if high_score > score:
+
+	if high_score < score:
 		high_score = score
 		$HUD.update_high_score(high_score)
 		save_game()
@@ -45,7 +45,7 @@ func load_game():
 		return # Error! We don't have a save to load.
 
 	save_game.open(SAVE_FILE_NAME, File.READ)
-	
+
 	if save_game.get_position() < save_game.get_len():
 		var node_data = parse_json(save_game.get_line())
 		high_score = node_data["high_score"]
