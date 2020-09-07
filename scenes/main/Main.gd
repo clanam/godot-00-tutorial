@@ -7,7 +7,7 @@ const Persistence = preload("Persistence.gd")
 
 var score
 var high_score = 0
-var persistence
+var persistence = Persistence.new()
 
 
 func game_over():
@@ -37,7 +37,6 @@ func new_game():
 func _ready():
 	# Make sure a new random seed is used each time.
 	randomize()
-	persistence = Persistence.new()
 	high_score = persistence.load_game()
 	$HUD.update_high_score(high_score)
 
