@@ -32,6 +32,9 @@ alias gut="godot -d -s --path $PWD addons/gut/gut_cmdln.gd"
 
 # in project root
 gut
+
+# run only one test
+gut -gselect=test_hud.gd
 ```
 
  - `-d`: run in debug mode

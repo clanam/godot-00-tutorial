@@ -18,10 +18,6 @@ func before_each():
 	add_child(_hud)
 
 
-func after_each():
-	remove_child(_hud)
-
-
 func test_show_message():
 	_hud.show_message("Yay squirrels!")
 	assert_eq(_message.text, "Yay squirrels!")
