@@ -35,6 +35,9 @@ gut
 
 # run only one test
 gut -gselect=test_hud.gd
+
+# for orphan debugging
+gut -gselect=test_main.gd --verbose
 ```
 
  - `-d`: run in debug mode

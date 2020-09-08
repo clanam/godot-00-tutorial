@@ -2,7 +2,6 @@ extends "res://addons/gut/test.gd"
 
 var HUD = load('res://scenes/hud/HUD.tscn')
 var Main = load('res://scenes/main/Main.tscn')
-var Persistence = load('res://scenes/main/Persistence.gd')
 
 var _main = null
 var _hud = null
@@ -12,14 +11,16 @@ var _persistence = null
 func before_each():
 	_main = autoqfree(Main.instance())
 	_hud = autoqfree(double(HUD).instance())
-	_persistence = autoqfree(double(Persistence).new())
+	_persistence = autoqfree(double('res://scenes/main/Persistence.gd').new())
 
+	var _orig_persistence = _main.persistence
 	_main.persistence = _persistence
 	stub(_persistence, "load_game").to_return(6)
 	stub(_persistence, "save_game").to_do_nothing()
+	_orig_persistence.free()
 
 	# Must add to the scene tree to not freak out the timers in Main.
-	add_child(_main) # calls _ready()
+	add_child(_main) # calls _ready(), which also loads high score
 
 	# Add hud after calling _ready() so tests are clean of calls triggered in _ready()
 	var orig_hud = _main.get_node("HUD")
